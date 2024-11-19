@@ -23,8 +23,11 @@ factList n =
 
 -- Write merge here
 merge :: [Int] -> [Int] -> [Int]
-merge = 
-    
+merge [] ls2 = ls2
+merge ls1 [] = ls1
+merge (i:is) (j:js)
+    | i <= j = i : merge is (j:js)
+    | otherwise = j : merge (i:is) js
 
 
 main = do 
@@ -33,3 +36,7 @@ main = do
     print(division 12 12)
     print(factorial 3)
     print(factList 7)
+    let ls1 = [2, 4, 6, 8]
+    let ls2 = [3, 5, 7]
+    print(merge ls1 ls2)
+    
